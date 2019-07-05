@@ -6,6 +6,9 @@ import { WidgetModule } from './widget/widget.module';
 import { Connection } from 'typeorm';
 import { ControllersModule } from './controllers/controllers.module';
 import { AuthenticationService } from './authentication/authentication.service';
+import DoneCallback = jest.DoneCallback;
+import { BullModule } from 'nest-bull';
+import { Job } from 'bull';
 
 @Module({
   imports: [
