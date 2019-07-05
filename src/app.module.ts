@@ -6,6 +6,11 @@ import { WidgetModule } from './widget/widget.module';
 import { Connection } from 'typeorm';
 import { ControllersModule } from './controllers/controllers.module';
 import { AuthenticationService } from './authentication/authentication.service';
+import { BullModule } from 'nest-bull';
+import { Job } from 'bull';
+import { InterceptorController } from './interceptor/interceptor.controller';
+import { InterceptorService } from './interceptor/interceptor.service';
+import DoneCallback = jest.DoneCallback;
 
 @Module({
   imports: [
@@ -23,8 +28,8 @@ import { AuthenticationService } from './authentication/authentication.service';
     }),
     WidgetModule,
     ControllersModule],
-  controllers: [AppController],
-  providers: [AppService, AuthenticationService],
+  controllers: [AppController, InterceptorController],
+  providers: [AppService, AuthenticationService, InterceptorService],
 })
 export class AppModule {
   constructor(private readonly connection: Connection) {}
