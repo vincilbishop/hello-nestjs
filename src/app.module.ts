@@ -10,6 +10,9 @@ import { BullModule } from 'nest-bull';
 import { Job } from 'bull';
 import { InterceptorController } from './interceptor/interceptor.controller';
 import { InterceptorService } from './interceptor/interceptor.service';
+import { DataController } from './data/data.controller';
+import { ServicesController } from './services/services.controller';
+import { DataService } from './data/data.service';
 import DoneCallback = jest.DoneCallback;
 
 @Module({
@@ -28,8 +31,8 @@ import DoneCallback = jest.DoneCallback;
     }),
     WidgetModule,
     ControllersModule],
-  controllers: [AppController, InterceptorController],
-  providers: [AppService, AuthenticationService, InterceptorService],
+  controllers: [AppController, InterceptorController, DataController, ServicesController],
+  providers: [AppService, AuthenticationService, InterceptorService, DataService],
 })
 export class AppModule {
   constructor(private readonly connection: Connection) {}
